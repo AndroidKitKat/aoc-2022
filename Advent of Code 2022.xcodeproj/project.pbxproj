@@ -8,10 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		8CF48A97293816F10064C632 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF48A96293816F10064C632 /* main.swift */; };
+		8CF48AA6293817FC0064C632 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF48AA5293817FC0064C632 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8CF48A91293816F10064C632 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8CF48AA1293817FC0064C632 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,10 +35,19 @@
 /* Begin PBXFileReference section */
 		8CF48A93293816F10064C632 /* Advent of Code 2022 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advent of Code 2022"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF48A96293816F10064C632 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8CF48AA3293817FC0064C632 /* day01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = day01; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CF48AA5293817FC0064C632 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8CF48A90293816F10064C632 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CF48AA0293817FC0064C632 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				8CF48A95293816F10064C632 /* Advent of Code 2022 */,
+				8CF48AA4293817FC0064C632 /* day01 */,
 				8CF48A94293816F10064C632 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				8CF48A93293816F10064C632 /* Advent of Code 2022 */,
+				8CF48AA3293817FC0064C632 /* day01 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +81,14 @@
 				8CF48A96293816F10064C632 /* main.swift */,
 			);
 			path = "Advent of Code 2022";
+			sourceTree = "<group>";
+		};
+		8CF48AA4293817FC0064C632 /* day01 */ = {
+			isa = PBXGroup;
+			children = (
+				8CF48AA5293817FC0064C632 /* main.swift */,
+			);
+			path = day01;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +111,23 @@
 			productReference = 8CF48A93293816F10064C632 /* Advent of Code 2022 */;
 			productType = "com.apple.product-type.tool";
 		};
+		8CF48AA2293817FC0064C632 /* day01 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CF48AA7293817FC0064C632 /* Build configuration list for PBXNativeTarget "day01" */;
+			buildPhases = (
+				8CF48A9F293817FC0064C632 /* Sources */,
+				8CF48AA0293817FC0064C632 /* Frameworks */,
+				8CF48AA1293817FC0064C632 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = day01;
+			productName = day01;
+			productReference = 8CF48AA3293817FC0064C632 /* day01 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +139,9 @@
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					8CF48A92293816F10064C632 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					8CF48AA2293817FC0064C632 = {
 						CreatedOnToolsVersion = 14.1;
 					};
 				};
@@ -111,6 +160,7 @@
 			projectRoot = "";
 			targets = (
 				8CF48A92293816F10064C632 /* Advent of Code 2022 */,
+				8CF48AA2293817FC0064C632 /* day01 */,
 			);
 		};
 /* End PBXProject section */
@@ -121,6 +171,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF48A97293816F10064C632 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CF48A9F293817FC0064C632 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CF48AA6293817FC0064C632 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +320,28 @@
 			};
 			name = Release;
 		};
+		8CF48AA8293817FC0064C632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UYPY43BUFP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8CF48AA9293817FC0064C632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UYPY43BUFP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -279,6 +359,15 @@
 			buildConfigurations = (
 				8CF48A9B293816F10064C632 /* Debug */,
 				8CF48A9C293816F10064C632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CF48AA7293817FC0064C632 /* Build configuration list for PBXNativeTarget "day01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CF48AA8293817FC0064C632 /* Debug */,
+				8CF48AA9293817FC0064C632 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

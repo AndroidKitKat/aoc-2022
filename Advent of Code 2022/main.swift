@@ -8,4 +8,3 @@
 import Foundation
 
 print("Change the build target in Xcode to select a different day!")
-
