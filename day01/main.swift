@@ -11,7 +11,8 @@ var calories: [Int] = []
 var calorieCounts: [Int] = []
 while let line = readLine(strippingNewline: true) {
     if !line.isEmpty {
-        calories.append(Int(line) ?? -1)
+        guard let intLine = Int(line) else { continue }
+        calories.append(intLine)
     } else {
         let totalCalories:Int = calories.reduce(0, +)
         calorieCounts.append(totalCalories)
