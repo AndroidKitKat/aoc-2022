@@ -37,6 +37,8 @@
 		8CF48A96293816F10064C632 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8CF48AA3293817FC0064C632 /* day01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = day01; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF48AA5293817FC0064C632 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8CF48AAA29386C620064C632 /* sample.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.input; sourceTree = "<group>"; };
+		8CF48AAB29386E150064C632 /* real.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = real.input; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				8CF48AA5293817FC0064C632 /* main.swift */,
+				8CF48AAA29386C620064C632 /* sample.input */,
+				8CF48AAB29386E150064C632 /* real.input */,
 			);
 			path = day01;
 			sourceTree = "<group>";

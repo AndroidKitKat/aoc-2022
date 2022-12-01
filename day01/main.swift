@@ -7,5 +7,19 @@
 
 import Foundation
 
-print("Stay tuned!")
+var calories: [Int] = []
+var calorieCounts: [Int] = []
+while let line = readLine(strippingNewline: true) {
+    if !line.isEmpty {
+        calories.append(Int(line) ?? -1)
+    } else {
+        let totalCalories:Int = calories.reduce(0, +)
+        calorieCounts.append(totalCalories)
+        calories.removeAll()
+    }
+}
+
+calorieCounts.sort(by: >)
+print(calorieCounts[0])
+print(calorieCounts[0] + calorieCounts[1] + calorieCounts[2])
 
