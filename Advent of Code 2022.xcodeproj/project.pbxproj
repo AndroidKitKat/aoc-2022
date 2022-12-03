@@ -177,6 +177,8 @@
 			dependencies = (
 			);
 			name = "Advent of Code 2022";
+			packageProductDependencies = (
+			);
 			productName = "Advent of Code 2022";
 			productReference = 8CF48A93293816F10064C632 /* Advent of Code 2022 */;
 			productType = "com.apple.product-type.tool";
@@ -265,6 +267,8 @@
 				Base,
 			);
 			mainGroup = 8CF48A8A293816F10064C632;
+			packageReferences = (
+			);
 			productRefGroup = 8CF48A94293816F10064C632 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

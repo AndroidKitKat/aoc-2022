@@ -30,13 +30,9 @@ func partOne(_ input: [String]) {
     for line in input {
         let sacks = Array(line).chunked(into: line.count / 2).map { Set($0) }
         guard let uniqueCompartment = sacks[0].intersection(sacks[1]).first else {  break }
-        
         totalPriority += checkPriority(for: uniqueCompartment)
-        
     }
-    
     print(totalPriority)
-
 }
 
 
