@@ -65,6 +65,8 @@
 		8CF48ABD293B0CE80064C632 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8CF48AC2293B0DB40064C632 /* sample.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.input; sourceTree = "<group>"; };
 		8CF48AC3293B0DCB0064C632 /* real.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = real.input; sourceTree = "<group>"; };
+		8CF48AC4293B0F650064C632 /* sample.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.input; sourceTree = "<group>"; };
+		8CF48AC5293B15520064C632 /* real.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = real.input; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				8CF48ABD293B0CE80064C632 /* main.swift */,
+				8CF48AC5293B15520064C632 /* real.input */,
+				8CF48AC4293B0F650064C632 /* sample.input */,
 			);
 			path = day03;
 			sourceTree = "<group>";
