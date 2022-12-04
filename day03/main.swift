@@ -35,7 +35,6 @@ func partOne(_ input: [String]) {
     print(totalPriority)
 }
 
-
 func partTwo(_ input: [String]) {
     let sackGroups = input.chunked(into: 3)
     var totalPriority: Int = 0
