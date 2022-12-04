@@ -17,8 +17,8 @@ while let line = readLine() {
     if rangeOne.isSubset(of: rangeTwo) || rangeTwo.isSubset(of: rangeOne) {
         totalFullSubRanges += 1
     }
-    
-    if !rangeOne.intersection(rangeTwo).isEmpty {
+
+    if !rangeOne.isDisjoint(with: rangeTwo) {
         totalAnySubRanges += 1
     }
 }
