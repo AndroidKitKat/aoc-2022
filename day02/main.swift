@@ -21,13 +21,13 @@ scissors: beats paper, loses rock
 x = lose, y = draw, z = win
 */
 
-let gameLogic: [String:[String]] = [
+let gameLogic: [String: [String]] = [
   "A": ["Z", "X", "Y"],
   "B": ["X", "Y", "Z"],
-  "C": ["Y", "Z", "X"],
+  "C": ["Y", "Z", "X"]
 ]
 
-let gameLogic2: [String:[String:Int]] = [
+let gameLogic2: [String: [String: Int]] = [
   "A": [
     "X": 3,
     "Y": 1,
@@ -44,8 +44,6 @@ let gameLogic2: [String:[String:Int]] = [
     "Z": 1
   ]
 ]
-  
-
 
 var totalScore: Int = 0
 var totalScore2: Int = 0
@@ -54,7 +52,6 @@ while let line = readLine() {
     let splitLine = line.split(separator: " ")
     guard let moveValue = Character(String(splitLine[1])).asciiValue else { break }
     let outcomeValue = gameLogic[String(splitLine[0])]!.firstIndex(of: String(splitLine[1]))! * 3
-
 
     totalScore += Int(moveValue) - 87 + outcomeValue
     let moveValue2 = gameLogic2[String(splitLine[0])]![String(splitLine[1])]!
