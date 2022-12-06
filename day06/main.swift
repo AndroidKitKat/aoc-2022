@@ -17,7 +17,7 @@ while let line = readLine() {
         }
         packetStartIndex += 1
     }
-    
+
     var messageStartIndex: Int = 14
     for window in line.windows(ofCount: 14) {
         if Set(window).count == window.count {
@@ -27,5 +27,3 @@ while let line = readLine() {
         messageStartIndex += 1
     }
 }
-
-
