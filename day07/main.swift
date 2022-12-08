@@ -17,7 +17,6 @@ final class File {
     let fileSize: Int
     // only directories have children
     var childrenFiles: [File]
-    var usedSpace = 0
 
     var parentPath: String {
         absolutePath.components(separatedBy: "/").dropLast(1).joined(separator: "/") == "" ? "/" : absolutePath.components(separatedBy: "/").dropLast(1).joined(separator: "/")
@@ -90,9 +89,6 @@ final class HistoryParser {
                 break
             }
         }
-        
-        // fix the obama nation that is my disjoint tree
-//        self.traverse(directory: self.dirs[0])
     }
     
     private func changeDirectory(to destinationDirectory: String) {
@@ -116,7 +112,7 @@ final class HistoryParser {
         }
     }
     
-    private func find(directory: File, for parent: String ) -> File?{
+    private func find(directory: File, for parent: String ) -> File? {
         if directory.absolutePath == parent {
             return directory
         }
@@ -129,6 +125,22 @@ final class HistoryParser {
     }
 }
 
+func calculateUsage(for target: String, root: File) -> Int {
+    var usage: Int = 0
+    print(root)
+    if root.absolutePath == target {        
+        for child in root.childrenFiles {
+            usage += calculateUsage(for: target, root: child)
+            usage += child.fileSize
+        }
+    } else {
+        for child in root.childrenFiles {
+            usage += calculateUsage(for: target, root: child)
+        }
+    }
+    return usage
+}
+
 var puzzleInput: [String] = []
 
 while let line = readLine() {
@@ -137,4 +149,8 @@ while let line = readLine() {
 
 let historyParser = HistoryParser(puzzleInput)
 
-// this is where I would put my solutions
+
+print(calculateUsage(for: "/", root: historyParser.root))
+print(calculateUsage(for: "/a", root: historyParser.root))
+print(calculateUsage(for: "/a/e", root: historyParser.root))
+
