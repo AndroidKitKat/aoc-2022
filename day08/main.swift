@@ -83,8 +83,6 @@ class Forest {
             }
         }
 
-//        print("looking east...")
-
         // look east (col towards max)
         var eastScore: Int = 0
         for treeCol in stride(from: col+1, to: self.treeMap[row].count, by: 1) {
@@ -109,7 +107,7 @@ class Forest {
             }
         }
 
-//        print("looking west...")
+        // look west (col towards 0)
         var westScore: Int = 0
         for treeCol in stride(from: col-1, through: 0, by: -1) {
             if self.treeMap[row][treeCol] >= self.treeMap[row][col] {
