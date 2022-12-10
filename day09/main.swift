@@ -23,96 +23,100 @@ struct Move {
 struct Position: Hashable {
     var x: Int
     var y: Int
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(x)
         hasher.combine(y)
     }
-    
+
     func isAdjacent(to other: Position) -> Bool {
         // check if the are the same
         if x == other.x && y == other.y {
             debugPrint("points are the same")
             return true
         }
-        
+
         // check if other point is to the right
         if x == other.x - 1 && y == other.y {
             debugPrint("head is to the right of the tail")
             return true
         }
-        
+
         // check if other point is to the right and up
         if x == other.x - 1 && y == other.y + 1 {
             debugPrint("head is to the right and up of the tail")
             return true
         }
-        
+
         // check if other point is directly up
         if x == other.x && y == other.y - 1 {
             debugPrint("head is to the up of the tail")
             return true
         }
-        
+
         // check if other point is to the left and up
         if x == other.x + 1 && y == other.y - 1 {
             debugPrint("head is to the up and left of the tail")
             return true
         }
-        
+
         // check if other point is directly to the left
         if x == other.x + 1 && y == other.y {
             debugPrint("head is to the left of the tail")
             return true
         }
-        
+
         // check if other point is down and to the left
         if x == other.x + 1 && y == other.y + 1 {
             debugPrint("head is to the right of the tail")
             return true
         }
-        
+
         // check if other point is directly down
         if x == other.x && y == other.y + 1 {
             debugPrint("head is to the down of the tail")
             return true
         }
-        
+
         // check if other point is down and to the right
         if x == other.x - 1 && y == other.y + 1 {
             debugPrint("head is to the down and right of the tail")
             return true
         }
-        
+
         debugPrint("tail did not need to move")
         return false
     }
-    
+
     func betterIsAdjacent(to other: Position) -> Bool {
-        return (y == other.y && abs(x - other.x) == 1) || (x == other.x && abs(y - other.y) == 1) || (abs(y - other.y) == 1 && abs(x - other.x) == 1)
+        return (x == other.x && y == other.y) ||
+               (y == other.y && abs(x - other.x) == 1) ||
+               (x == other.x && abs(y - other.y) == 1) ||
+               (abs(y - other.y) == 1 && abs(x - other.x) == 1)
     }
 }
 
 final class Board {
     private var headPosition: Position = Position(x: 0, y: 0)
     private var tailPosition: Position = Position(x: 0, y: 0)
-    
+
     var headVisited: [Position] = []
     var tailVisited: Set<Position> = []
     var allTailVisited: [Position] = []
-    
+
     let moves: [Move]
-    
+
     init(moves: [Move]) {
         self.moves = moves
-        
+
+        headVisited.append(headPosition)
+        allTailVisited.append(headPosition)
         for move in moves {
             self.moveHead(move: move)
             print("---")
         }
-        headVisited.append(headPosition)
     }
-    
+
     private func moveHead(move: Move) {
         switch move.direction {
         case .up:
@@ -124,9 +128,9 @@ final class Board {
         case.right:
             self.stepHead(to: move, in: "x", by: 1)
         }
-        
+
     }
-    
+
     private func stepHead(to move: Move, in axis: Character, by amount: Int) {
         for _ in 1...move.magnitude {
             self.headVisited.append(headPosition)
@@ -138,20 +142,20 @@ final class Board {
             default:
                 fatalError("Not a valid axis!")
             }
-            
+
             // check to see if the head cannot see the tail
             if !tailPosition.betterIsAdjacent(to: headPosition) {
                 tailPosition = headVisited.last!
                 allTailVisited.append(tailPosition)
             }
 
-            
-            
-            
+
+
+
             // at the end of each head move, check if the head left the
             // tail behind, and catch the tail up
-            
-            
+
+
             // now add the tail position to the set of visited spots
 //            self.tailVisited.insert(self.tailPosition)
         }
