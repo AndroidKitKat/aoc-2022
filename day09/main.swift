@@ -14,19 +14,6 @@ enum Direction: String {
     case right = "R"
 }
 
-enum TouchingDirection {
-    case up
-    case down
-    case left
-    case right
-    case upleft
-    case downleft
-    case upright
-    case downright
-    case ontop
-    case not
-}
-
 struct Move {
     // Vector!
     let magnitude: Int
@@ -100,6 +87,10 @@ struct Position: Hashable {
         debugPrint("tail did not need to move")
         return false
     }
+    
+    func betterIsAdjacent(to other: Position) -> Bool {
+        return (y == other.y && abs(x - other.x) == 1) || (x == other.x && abs(y - other.y) == 1) || (abs(y - other.y) == 1 && abs(x - other.x) == 1)
+    }
 }
 
 final class Board {
@@ -110,9 +101,6 @@ final class Board {
     var tailVisited: Set<Position> = []
     var allTailVisited: [Position] = []
     
-    var lastTouchingDirection: TouchingDirection = .ontop
-    var touchingDirections: [TouchingDirection] = []
-    
     let moves: [Move]
     
     init(moves: [Move]) {
@@ -120,7 +108,9 @@ final class Board {
         
         for move in moves {
             self.moveHead(move: move)
+            print("---")
         }
+        headVisited.append(headPosition)
     }
     
     private func moveHead(move: Move) {
@@ -138,30 +128,32 @@ final class Board {
     }
     
     private func stepHead(to move: Move, in axis: Character, by amount: Int) {
-        
-
         for _ in 1...move.magnitude {
-            let oldHeadPosition = self.headPosition
+            self.headVisited.append(headPosition)
             switch axis.lowercased().first {
             case "x":
                 self.headPosition.x += amount
-                
             case "y":
                 self.headPosition.y += amount
             default:
                 fatalError("Not a valid axis!")
             }
             
+            // check to see if the head cannot see the tail
+            if !tailPosition.betterIsAdjacent(to: headPosition) {
+                tailPosition = headVisited.last!
+                allTailVisited.append(tailPosition)
+            }
+
+            
+            
+            
             // at the end of each head move, check if the head left the
             // tail behind, and catch the tail up
             
-            if !self.tailPosition.isAdjacent(to: self.headPosition) {
-                // we enter here if the tail was not able to find the head.
-                self.tailPosition = oldHeadPosition
-            }
             
             // now add the tail position to the set of visited spots
-            self.tailVisited.insert(self.tailPosition)
+//            self.tailVisited.insert(self.tailPosition)
         }
     }
 }
@@ -175,4 +167,11 @@ while let line = readLine() {
 
 var board = Board(moves: headMoves)
 
-print(board.tailVisited.count)
+//print(board.headVisited)
+
+for move in board.allTailVisited {
+    print(move)
+}
+
+print(Set(board.allTailVisited.map {$0}).count)
+//print(Set(board.allTailVisited.map { $0 }).count)
