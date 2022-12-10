@@ -30,65 +30,6 @@ struct Position: Hashable {
     }
 
     func isAdjacent(to other: Position) -> Bool {
-        // check if the are the same
-        if x == other.x && y == other.y {
-            debugPrint("points are the same")
-            return true
-        }
-
-        // check if other point is to the right
-        if x == other.x - 1 && y == other.y {
-            debugPrint("head is to the right of the tail")
-            return true
-        }
-
-        // check if other point is to the right and up
-        if x == other.x - 1 && y == other.y + 1 {
-            debugPrint("head is to the right and up of the tail")
-            return true
-        }
-
-        // check if other point is directly up
-        if x == other.x && y == other.y - 1 {
-            debugPrint("head is to the up of the tail")
-            return true
-        }
-
-        // check if other point is to the left and up
-        if x == other.x + 1 && y == other.y - 1 {
-            debugPrint("head is to the up and left of the tail")
-            return true
-        }
-
-        // check if other point is directly to the left
-        if x == other.x + 1 && y == other.y {
-            debugPrint("head is to the left of the tail")
-            return true
-        }
-
-        // check if other point is down and to the left
-        if x == other.x + 1 && y == other.y + 1 {
-            debugPrint("head is to the right of the tail")
-            return true
-        }
-
-        // check if other point is directly down
-        if x == other.x && y == other.y + 1 {
-            debugPrint("head is to the down of the tail")
-            return true
-        }
-
-        // check if other point is down and to the right
-        if x == other.x - 1 && y == other.y + 1 {
-            debugPrint("head is to the down and right of the tail")
-            return true
-        }
-
-        debugPrint("tail did not need to move")
-        return false
-    }
-
-    func betterIsAdjacent(to other: Position) -> Bool {
         return (x == other.x && y == other.y) ||
                (y == other.y && abs(x - other.x) == 1) ||
                (x == other.x && abs(y - other.y) == 1) ||
@@ -101,8 +42,9 @@ final class Board {
     private var tailPosition: Position = Position(x: 0, y: 0)
 
     var headVisited: [Position] = []
-    var tailVisited: Set<Position> = []
-    var allTailVisited: [Position] = []
+    var tailVisited: [Position] = []
+    
+    var knots: [Int: Position] = [:]
 
     let moves: [Move]
 
@@ -110,10 +52,9 @@ final class Board {
         self.moves = moves
 
         headVisited.append(headPosition)
-        allTailVisited.append(headPosition)
+        tailVisited.append(headPosition)
         for move in moves {
             self.moveHead(move: move)
-            print("---")
         }
     }
 
@@ -144,20 +85,10 @@ final class Board {
             }
 
             // check to see if the head cannot see the tail
-            if !tailPosition.betterIsAdjacent(to: headPosition) {
+            if !tailPosition.isAdjacent(to: headPosition) {
                 tailPosition = headVisited.last!
-                allTailVisited.append(tailPosition)
+                tailVisited.append(tailPosition)
             }
-
-
-
-
-            // at the end of each head move, check if the head left the
-            // tail behind, and catch the tail up
-
-
-            // now add the tail position to the set of visited spots
-//            self.tailVisited.insert(self.tailPosition)
         }
     }
 }
@@ -173,9 +104,8 @@ var board = Board(moves: headMoves)
 
 //print(board.headVisited)
 
-for move in board.allTailVisited {
+for move in board.tailVisited {
     print(move)
 }
 
-print(Set(board.allTailVisited.map {$0}).count)
-//print(Set(board.allTailVisited.map { $0 }).count)
+print(Set(board.tailVisited.map {$0}).count)
